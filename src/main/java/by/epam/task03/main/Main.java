@@ -1,10 +1,7 @@
 package by.epam.task03.main;
 
 import by.epam.task03.entity.*;
-import by.epam.task03.service.Aviacompany;
-import by.epam.task03.service.FlyingDistanceSort;
-import by.epam.task03.service.SearchingPlane;
-import by.epam.task03.service.SumValue;
+import by.epam.task03.service.*;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -39,6 +36,13 @@ public class Main {
         System.out.println(plains);
 
         System.out.println("Find planes of fuel capacity range: ");
-        System.out.println(SearchingPlane.findByFuelCapacity(40, 600, plains));
+        try {
+            System.out.println(SearchingPlane.findByFuelCapacity(40, 600, plains));
+
+            System.out.println("Exceptional situation with logger: ");
+            System.out.println(SearchingPlane.findByFuelCapacity(4000, 600, plains));
+        } catch (IncorrectValueException e) {
+            e.printStackTrace();
+        }
     }
 }
